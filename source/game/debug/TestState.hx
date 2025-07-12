@@ -1,6 +1,8 @@
 package game.debug;
 
+import backend.Logger;
 import backend.Paths;
+import haxe.Log;
 import sys.FileSystem;
 
 //Ill be using this class to test a few things
@@ -12,11 +14,11 @@ class TestState extends FlxState{
 
         #if desktop
 		// How FileSystem looks
-        trace(FileSystem.readDirectory(Paths.getPath("data")));
+		Logger.log(FileSystem.readDirectory(Paths.getPath("data")));
 		// How Paths loooks
-		trace(Paths.readDirectory("data"));
+		Logger.log(Paths.readDirectory("data"));
 
-		trace(Paths.getText("here goes data"));
+		Logger.log(Paths.getText("here goes data"));
         #end
 		var dad:FlxSprite = new FlxSprite();
 		dad.frames = Paths.getSparrowAtlas("daddy dearest/spritesheet", "data/characters");

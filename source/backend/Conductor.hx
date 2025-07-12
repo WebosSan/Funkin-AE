@@ -3,6 +3,7 @@ package backend;
 import flixel.FlxG;
 import flixel.math.FlxMath;
 import flixel.system.FlxAssets.FlxSoundAsset;
+import flixel.util.FlxSignal;
 import lime.media.openal.AL;
 
 class Conductor {
@@ -22,6 +23,10 @@ class Conductor {
     private static var _isPlaying:Bool = false;
 
     private static var _time:Float = 0;
+
+	// SIGNALS YAAY
+	public static var onBeat:FlxTypedSignal<Int->Void> = new FlxTypedSignal();
+	public static var onStep:FlxTypedSignal<Int->Void> = new FlxTypedSignal();
 
     public static function loadSong(path:FlxSoundAsset, ?bpm:Int = 130) {
         Conductor.bpm = bpm; // Update BPM and recalculate _stepTime/_beatTime
@@ -123,9 +128,20 @@ class Conductor {
     }
     #end
 
+	private static var _prevBeat:Int = 0;
+	private static var _prevStep:Int = 0;
+
     private static function updateStepsAndBeats() {
         curStep = Math.floor(_time / _stepTime);
         curBeat = Math.floor(curStep / _stepsPerBeat);
+		if (curStep != _prevStep)
+			onStep.dispatch(curStep);
+
+		if (curBeat != _prevBeat)
+			onStep.dispatch(curStep);
+
+		_prevStep = curStep;
+		_prevBeat = curBeat;
     }
 
     // Setters/Getters
