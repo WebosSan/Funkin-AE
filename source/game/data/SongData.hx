@@ -1,6 +1,7 @@
 package game.data;
 
-typedef SongData = {
+typedef SongData =
+{
     difficulties:Array<DifficultyData>
 }
 

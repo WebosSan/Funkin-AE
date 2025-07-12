@@ -35,7 +35,7 @@ class Paths
 		}
 		else
 		{
-			// TODO Make A Logger with a warn message
+			Logger.warn('Image $path doesnt exists');
 			return null;
 		}
 	}
@@ -56,7 +56,7 @@ class Paths
 		}
 		else
 		{
-			// TODO Make A Logger with a warn message
+			Logger.warn('Sound $path doesnt exists');
 			return null;
 		}
 	}
@@ -70,7 +70,7 @@ class Paths
 		}
 		else
 		{
-			// TODO Make A Logger with a warn message
+			Logger.warn('Text $path doesnt exists');
 			return "";
 		}
 	}

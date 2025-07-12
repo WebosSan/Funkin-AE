@@ -1,0 +1,36 @@
+{
+    lanes: [
+        {
+            direction: "up",
+            animations: [
+                {
+                    name: "static",
+                    prefix: "blalbalbalbla",
+                    framerate: 25,
+                    offset: {
+                        x: 0,
+                        y: 0
+                    }
+                },
+                {
+                    name: "pressed",
+                    prefix: "blalbalbalbla",
+                    framerate: 25,
+                    offset: {
+                        x: 0,
+                        y: 0
+                    }
+                },
+                {
+                    name: "confirm",
+                    prefix: "blalbalbalbla",
+                    framerate: 25,
+                    offset: {
+                        x: 0,
+                        y: 0
+                    }
+                }
+            ]
+        }
+    ]
+}
