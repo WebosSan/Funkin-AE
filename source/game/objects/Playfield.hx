@@ -9,7 +9,7 @@ class Playfield extends FlxGroup
 	public var opponentStrums:Strumline;
 	public var playerStrums:Strumline;
 
-	public function new(downScroll:Bool, ?skin:String = "default")
+	public function new(downScroll:Bool = false, ?skin:String = "default")
 	{
 		super();
 		var keyCount:Int = 4; // replace this with the actual keycount soon

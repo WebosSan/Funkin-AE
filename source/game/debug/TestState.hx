@@ -27,6 +27,6 @@ class TestState extends FlxState{
 		dad.animation.addByPrefix("idle", "Dad idle dance", 24);
 		dad.animation.play("idle");
 		add(dad);
-		add(new Playfield(true));
+		add(new Playfield());
     }
 }
