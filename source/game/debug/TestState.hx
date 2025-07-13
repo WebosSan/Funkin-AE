@@ -2,6 +2,7 @@ package game.debug;
 
 import backend.Logger;
 import backend.Paths;
+import game.objects.Playfield;
 import haxe.Log;
 import sys.FileSystem;
 
@@ -26,5 +27,6 @@ class TestState extends FlxState{
 		dad.animation.addByPrefix("idle", "Dad idle dance", 24);
 		dad.animation.play("idle");
 		add(dad);
+		add(new Playfield(true));
     }
 }
