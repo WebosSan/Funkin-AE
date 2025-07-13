@@ -1,4 +1,6 @@
 {
+  antialiasing:true,
+  scale:0.7,
   lanes: [
     {
       direction: "left",
@@ -7,19 +9,16 @@
           name: "static",
           prefix: "arrowLEFT0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "pressed",
           prefix: "A press0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "confirm",
           prefix: "A confirm0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         }
       ]
     },
@@ -30,19 +29,16 @@
           name: "static",
           prefix: "arrowDOWN0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "pressed",
           prefix: "B press0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "confirm",
           prefix: "B confirm0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         }
       ]
     },
@@ -53,19 +49,16 @@
           name: "static",
           prefix: "arrowUP0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "pressed",
           prefix: "C press0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "confirm",
           prefix: "C confirm0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         }
       ]
     },
@@ -76,19 +69,16 @@
           name: "static",
           prefix: "arrowRIGHT0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "pressed",
           prefix: "D press0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "confirm",
           prefix: "D confirm0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         }
       ]
     },
@@ -99,19 +89,16 @@
           name: "static",
           prefix: "arrowSPACE0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "pressed",
           prefix: "E press0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "confirm",
           prefix: "E confirm0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         }
       ]
     },
@@ -122,19 +109,16 @@
           name: "static",
           prefix: "arrowLEFT0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "pressed",
           prefix: "F press0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "confirm",
           prefix: "F confirm0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         }
       ]
     },
@@ -145,19 +129,16 @@
           name: "static",
           prefix: "arrowDOWN0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "pressed",
           prefix: "G press0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "confirm",
           prefix: "G confirm0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         }
       ]
     },
@@ -168,19 +149,16 @@
           name: "static",
           prefix: "arrowUP0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "pressed",
           prefix: "H press0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "confirm",
           prefix: "H confirm0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         }
       ]
     },
@@ -191,19 +169,16 @@
           name: "static",
           prefix: "arrowRIGHT0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "pressed",
           prefix: "I press0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         },
         {
           name: "confirm",
           prefix: "I confirm0",
           framerate: 24,
-          offset: { x: 0, y: 0 }
         }
       ]
     }
