@@ -28,7 +28,7 @@ class Strum extends FunkinSprite
 			skinName = 'default';
 		skin = Json5.parse(Paths.getText('notes/$skinName/data', 'json5', 'data'));
 		frames = Paths.getSparrowAtlas('notes/$skinName/notes', 'data');
-		var animations = skin.lanes[lane].animations;
+		var animations = skin.lanes[lane % skin.lanes.length].animations;
 		for (animationData in animations)
 			setAnimationByPrefix(animationData.name, animationData.prefix, FlxPoint.get(), animationData.framerate, false);
 		playAnimation('static');
