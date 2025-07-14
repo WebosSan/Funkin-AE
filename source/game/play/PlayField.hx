@@ -43,6 +43,14 @@ class PlayField extends FlxContainer
 		Note.isHittableSignal.add(onHit);
 	}
 
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+		handleStrumAnimations();
+	}
+
+	var noteHitMap:Map<Int, Note> = new Map();
+
 	function onHit(n:Note)
 	{
 		if (n == null)
@@ -50,19 +58,61 @@ class PlayField extends FlxContainer
 
 		if (!n.isPlayer)
 		{
-			trace(n.strum <= Conductor.time);
+			var strum:Strum = getStrum(n.lane, n.isPlayer);
+			strum.playAnim("confirm");
 			removeNote(n);
 		}
 		else
 		{
+			noteHitMap.set(n.lane, n);
 			if (Controls.getGameKey(PlaySettings.keyOrder.get(PlaySettings.keyModes)[n.lane], JUST_PRESSED))
 			{
+				noteHitMap.set(n.lane, n);
 				removeNote(n);
 			}
 		}
 	}
 
-	// Eliminar nota individualmente
+	// for player
+	function handleStrumAnimations()
+	{
+		for (i in 0...PlaySettings.keyModes)
+		{
+			var key = PlaySettings.keyOrder.get(PlaySettings.keyModes)[i];
+			var strum = playerStrums.members[i];
+
+			if (Controls.getGameKey(key, JUST_PRESSED))
+			{
+				if (noteHitMap.exists(i))
+				{
+					strum.playAnim("confirm");
+					noteHitMap.remove(i);
+				}
+				else
+				{
+					strum.playAnim("pressed");
+				}
+			}
+			else if (Controls.getGameKey(key, JUST_RELEASED))
+			{
+				strum.playAnim("static");
+			}
+			else if (Controls.getGameKey(key, PRESSED))
+			{
+				if (strum.animation.curAnim.name != "confirm")
+				{
+					strum.playAnim("pressed");
+				}
+			}
+			else if (strum.animation.curAnim.name != "confirm")
+			{
+				strum.playAnim("static");
+			}
+		}
+
+		noteHitMap.clear();
+	}
+
 	function removeNote(n:Note)
 	{
 		n.kill();
@@ -76,28 +126,30 @@ class PlayField extends FlxContainer
 		return strumGroup.members[Std.int(Math.max(0, Math.min(lane, PlaySettings.keyModes - 1)))];
 	}
 
-    function generateStrums(isPlayer:Bool = false) {
-        var maxHeight = FlxG.height / 10;
-        var maxWidth = FlxG.width / 2.5;
-        var startX = isPlayer ? FlxG.width - maxWidth - 75 : 75;
-        var strumGroup = isPlayer ? playerStrums : cpuStrums;
-    
-        var strumWidth = maxHeight * 0.9; 
-        var spacing = 10; 
-    
-        var totalWidth = (strumWidth * PlaySettings.keyModes) + (spacing * (PlaySettings.keyModes - 1));
-    
-        var startPosX = startX + (maxWidth - totalWidth) / 2;
-    
-        for (i in 0...PlaySettings.keyModes) {
-            var strum = new Strum(0, 20, i, "default", isPlayer);
-            strum.size = strumWidth;
-            strum.x = startPosX + (strumWidth + spacing) * i;
-            strumGroup.add(strum);
-        }
-    
-        add(strumGroup);
-    }
+	function generateStrums(isPlayer:Bool = false)
+	{
+		var maxHeight = FlxG.height / 10;
+		var maxWidth = FlxG.width / 2.5;
+		var startX = isPlayer ? FlxG.width - maxWidth - 75 : 75;
+		var strumGroup = isPlayer ? playerStrums : cpuStrums;
+
+		var strumWidth = maxHeight * 0.9;
+		var spacing = 10;
+
+		var totalWidth = (strumWidth * PlaySettings.keyModes) + (spacing * (PlaySettings.keyModes - 1));
+
+		var startPosX = startX + (maxWidth - totalWidth) / 2;
+
+		for (i in 0...PlaySettings.keyModes)
+		{
+			var strum = new Strum(0, 20, i, "default", isPlayer);
+			strum.size = strumWidth;
+			strum.x = startPosX + (strumWidth + spacing) * i;
+			strumGroup.add(strum);
+		}
+
+		add(strumGroup);
+	}
 
 	function generateNotes()
 	{
@@ -110,5 +162,10 @@ class PlayField extends FlxContainer
 			note.target = strum;
 			note.size = strum.size;
 		}
+	}
+	override function destroy()
+	{
+		super.destroy();
+		Note.isHittableSignal.remove(onHit);
 	}
 }

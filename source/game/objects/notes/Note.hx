@@ -39,7 +39,7 @@ class Note extends FlxSprite
 
 		frames = Paths.getSparrowAtlas("notes", "data/notes/" + type);
 
-		var animData:LaneData = Lambda.find(data.lanes, i -> i.direction == PlaySettings.keyOrder.get(PlaySettings.keyModes)[lane]);
+		var animData:LaneData = data.lanes.filter(i -> i.direction == PlaySettings.keyOrder.get(PlaySettings.keyModes)[lane])[0];
 		animation.addByPrefix("normal", animData.normal, 24);
 		animation.play("normal");
 	}
@@ -58,20 +58,19 @@ class Note extends FlxSprite
 
 	function hitWindow()
 	{
-		if (!isPlayer)
+		if (isPlayer)
 		{
-			if (strum <= Conductor.time)
+			if (Conductor.time >= strum - ((10 / 60) * 1000) && Conductor.time < strum + ((10 / 60) * 1000 / 2))
 			{
-                trace(strum);
-                trace(Conductor.time);
-                trace(strum <= Conductor.time);
 				isHittableSignal.dispatch(this);
 			}
 		}
-
-		if (Conductor.time >= strum - ((10 / 60) * 1000) && Conductor.time < strum + ((10 / 60) * 1000 / 2))
+		else
 		{
-			isHittableSignal.dispatch(this);
+			if (strum <= Conductor.time)
+			{
+				isHittableSignal.dispatch(this);
+			}
 		}
 	}
 }

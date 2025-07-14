@@ -19,7 +19,7 @@ class Main extends Sprite
 		ScriptedTypeUtil.resolveModule = resolveModule;
 		super();
 		PlayerSettings.init();
-		addChild(new FunkinGame(0, 0, TestState, 60, 60, true, false));
+		addChild(new FunkinGame(0, 0, ChartingState, 60, 60, true, false));
 	}
 	public static function resolveModule(name:String):Array<ModuleDecl>
 	{
