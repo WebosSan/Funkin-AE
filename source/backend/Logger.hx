@@ -2,23 +2,28 @@ package backend;
 
 import flixel.util.FlxColor;
 import haxe.PosInfos;
+import lime.app.Application;
 
 class Logger {
     private static var logFormat:String = "[{0}] ({1}) {2}:({3}:{4}): {5}";
 
-    public static function log(msg:Dynamic, ?pos:PosInfos) {
-        print(msg, LOG, pos);
+	public static function log(msg:Dynamic, ?infos:PosInfos)
+	{
+		print(msg, LOG, infos);
     }
 
-    public static function warn(msg:Dynamic, ?pos:PosInfos) {
-        print(msg, WARN, pos);
+	public static function warn(msg:Dynamic, ?infos:PosInfos)
+	{
+		print(msg, WARN, infos);
     }
 
-    public static function error(msg:Dynamic, ?pos:PosInfos) {
-        print(msg, ERROR, pos);
+	public static function error(msg:Dynamic, ?infos:PosInfos)
+	{
+		print(msg, ERROR, infos);
     }
 
-    public static function print(text:Dynamic, logLevel:LogLevel, pos:PosInfos) {
+	public static function print(text:Dynamic, logLevel:LogLevel, infos:PosInfos)
+	{
         var head:String;
         var colorCode:String;
 
@@ -40,9 +45,9 @@ class Logger {
         msg = StringTools.replace(msg, ")", AnsiiCodes.GRAY + ")" + AnsiiCodes.RESET);
         msg = StringTools.replace(msg, "{0}", colorCode + head + AnsiiCodes.RESET);
         msg = StringTools.replace(msg, "{1}", getTime());
-        msg = StringTools.replace(msg, "{2}", pos.fileName);
-        msg = StringTools.replace(msg, "{3}", pos.methodName);
-        msg = StringTools.replace(msg, "{4}", Std.string(pos.lineNumber));
+		msg = StringTools.replace(msg, "{2}", infos.fileName);
+		msg = StringTools.replace(msg, "{3}", infos.methodName);
+		msg = StringTools.replace(msg, "{4}", Std.string(infos.lineNumber));
         msg = StringTools.replace(msg, "{5}", Std.string(text));
 
         Sys.println(msg + AnsiiCodes.RESET);

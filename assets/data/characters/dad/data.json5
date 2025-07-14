@@ -1,0 +1,40 @@
+{
+    "position": {
+        "global": [0, 0],
+        "camera": [0, 0]
+    },
+    "healthBarColor": "#a888ff",
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "Dad idle dance",
+            "offsets": [0, 0],
+            "fps": 24,
+            "loop": true
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "Dad Sing Note LEFT",
+            "offsets": [10, -10],
+            "fps": 24
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "Dad Sing Note DOWN",
+            "offsets": [0, 30],
+            "fps": 24
+        },
+        {
+            "name": "singUP",
+            "prefix": "Dad Sing Note UP",
+            "offsets": [6, -50],
+            "fps": 24
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "Dad Sing Note RIGHT",
+            "offsets": [0, -27],
+            "fps": 24
+        }
+    ]
+}

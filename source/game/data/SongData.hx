@@ -2,6 +2,7 @@ package game.data;
 
 typedef SongData =
 {
+	songName:String,
     difficulties:Array<DifficultyData>
 }
 
@@ -12,7 +13,7 @@ typedef DifficultyData = {
 }
 
 typedef NotesData = {
-    ?keysMode:Int,
+	keysMode:Int,
     data: Array<NoteData>
 }
 
@@ -26,13 +27,15 @@ typedef NoteData = {
     ?trailDuration:Float
 } 
 
-typedef DifficultyMetadata = {
-    songName:String,
+typedef DifficultyMetadata =
+{
     bpm:Int,
     player1:String,
     player2:String,
     player3:String,
     stage:String,
     ?songPrefix:String,
-    ?songPostfix:String
+	?songPostfix:String,
+	?hasPlayerVocals:Bool,
+	?hasEnemyVocals:Bool
 }

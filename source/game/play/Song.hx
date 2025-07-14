@@ -21,7 +21,7 @@ class Song {
 	public static function getSong(song:String):Song
 	{
 		var s:Song = new Song();
-		var data:SongData = Json5.parse(Paths.getText('$song/data', "json5", "data"));
+		var data:SongData = Json5.parse(Paths.getText('$song/data', "json5", "data/songs"));
 		s.data = data;
 		return s;
     }

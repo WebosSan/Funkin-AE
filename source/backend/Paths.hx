@@ -13,9 +13,10 @@ class Paths
 	public static var cacheImages:Map<String, FlxGraphic> = new Map();
 	public static var cacheSounds:Map<String, Sound> = new Map();
 
-    public static function getSparrowAtlas(path:String, ?directory:String = "images") {
-        return FlxAtlasFrames.fromSparrow(getImage(path, directory), getText(path, "xml", directory));
-    }
+	public static function getSparrowAtlas(path:String, ?directory:String = "images")
+	{
+		return FlxAtlasFrames.fromSparrow(getImage(path, directory), getText(path, "xml", directory));
+	}
 
 	public static function getImage(path:String, ?directory:String = "images"):FlxGraphic
 	{
@@ -57,6 +58,27 @@ class Paths
 		else
 		{
 			Logger.warn('Sound $path doesnt exists');
+			return null;
+		}
+	}
+
+	public static function getInst(song:String):Sound
+	{
+		var finalPath:String = getPath(song + "/Inst.ogg", "songs");
+		if (cacheSounds.exists(finalPath))
+		{
+			return cacheSounds.get(finalPath);
+		}
+
+		if (Assets.exists(finalPath))
+		{
+			var sound:Sound = Sound.fromFile(finalPath);
+			cacheSounds.set(finalPath, sound);
+			return sound;
+		}
+		else
+		{
+			Logger.warn('Song Instrumental $song doesnt exists');
 			return null;
 		}
 	}
@@ -117,8 +139,9 @@ class Paths
 			}
 			cacheImages.clear();
 		}
-        if (cacheSounds != null){
-            cacheSounds.clear();
-        }
+		if (cacheSounds != null)
+		{
+			cacheSounds.clear();
+		}
 	}
 }

@@ -8,7 +8,7 @@ class FunkinSprite extends FlxSprite
 	public var positionOffset:FlxPoint = new FlxPoint();
 	public var animOffsets:Map<String, FlxPoint> = new Map();
 
-	public var danceOnBeat:Bool = false;
+	public var danceOnBeat:Bool = true;
 
 	private var _currentOffset:FlxPoint = new FlxPoint();
 
@@ -29,7 +29,7 @@ class FunkinSprite extends FlxSprite
 		return animation != null ? animation.name : "";
 	}
 
-	public function setAnimationByPrefix(name:String, prefix:String, offset:FlxPoint, ?framerate:Int = 24, ?loop:Bool = true, ?flipX:Bool = false,
+	public function setAnimationByPrefix(name:String, prefix:String, offset:FlxPoint, ?framerate:Int = 24, ?loop:Bool = false, ?flipX:Bool = false,
 			?flipY:Bool = false)
 	{
 		this.animation.addByPrefix(name, prefix, framerate, loop, flipX, flipY);

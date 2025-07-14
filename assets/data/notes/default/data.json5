@@ -1,0 +1,58 @@
+{
+    lanes: [
+        {
+            direction: "left",
+            normal: "A0",
+            hold: "A hold0",
+            end: "A tail0"
+        },
+        {
+            direction: "down",
+            normal: "B0",
+            hold: "B hold0",
+            end: "B tail0"
+        },
+        {
+            direction: "up",
+            normal: "C0",
+            hold: "C hold0",
+            end: "C tail0"
+        },
+        {
+            direction: "right",
+            normal: "D0",
+            hold: "D hold0",
+            end: "D tail0"
+        },
+        {
+            direction: "space",
+            normal: "E0",
+            hold: "E hold0",
+            end: "E tail0"
+        },
+        {
+            direction: "left2",
+            normal: "F0",
+            hold: "F hold0",
+            end: "F tail0"
+        },
+        {
+            direction: "down2",
+            normal: "G0",
+            hold: "G hold0",
+            end: "G tail0"
+        },
+        {
+            direction: "up2",
+            normal: "H0",
+            hold: "H hold0",
+            end: "H tail0"
+        },
+        {
+            direction: "right2",
+            normal: "I0",
+            hold: "I hold0",
+            end: "I tail0"
+        }
+    ]
+}
